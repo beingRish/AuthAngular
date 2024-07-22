@@ -1,0 +1,30 @@
+
+button.border-success {
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button.border-success:hover {
+    color: white !important;
+    background-color: green !important;
+}
+
+.fa-times {
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.fa-times:hover {
+    color: white !important;
+    background-color: red !important;
+}
+
+.navbar-nav .nav-item .nav-link i{
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-item .nav-link i:hover{
+    color: white !important;
+    background-color: black !important;
+}

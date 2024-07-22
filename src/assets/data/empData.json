@@ -1,0 +1,91 @@
+{
+    "empData": [
+        {
+            "id": "1",
+            "name": "Rishabh",
+            "designation": "Angular Developer",
+            "dept": "Development",
+            "status": "Active"
+        },
+        {
+            "id": "2",
+            "name": "Ritik",
+            "designation": "Web Designer",
+            "dept": "Design",
+            "status": "Active"
+        },
+        {
+            "id": "3",
+            "name": "Vishwjeet",
+            "designation": "React Developer",
+            "dept": "Development",
+            "status": "Active"
+        },
+        {
+            "id": "4",
+            "name": "Shashank",
+            "designation": "Hr Manager",
+            "dept": "Hr",
+            "status": "Inactive"
+        },
+        {
+            "id": "5",
+            "name": "Shuryanshu",
+            "designation": "Admin Manager",
+            "dept": "Admin",
+            "status": "Inactive"
+        },
+        {
+            "id": "6",
+            "name": "Antul",
+            "designation": "Frontend Developer",
+            "dept": "Development",
+            "status": "Active"
+        }
+    ],
+
+    "empData2": [
+        {
+            "id": "1",
+            "name": "Rishabh",
+            "designation": "Angular Developer",
+            "dept": "Development",
+            "status": "Active"
+        },
+        {
+            "id": "2",
+            "name": "Ritik",
+            "designation": "Web Designer",
+            "dept": "Design",
+            "status": "Active"
+        },
+        {
+            "id": "3",
+            "name": "Vishwjeet",
+            "designation": "React Developer",
+            "dept": "Development",
+            "status": "Active"
+        },
+        {
+            "id": "4",
+            "name": "Shashank",
+            "designation": "Hr Manager",
+            "dept": "Hr",
+            "status": "Inactive"
+        },
+        {
+            "id": "5",
+            "name": "Shuryanshu",
+            "designation": "Admin Manager",
+            "dept": "Admin",
+            "status": "Inactive"
+        },
+        {
+            "id": "6",
+            "name": "Antul",
+            "designation": "Frontend Developer",
+            "dept": "Development",
+            "status": "Active"
+        }
+    ]
+}
