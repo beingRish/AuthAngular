@@ -18,7 +18,7 @@ export class DesignUtilityService {
   }
 
   fetchData(): Observable<any> {
-    return this.http.get<any>(`${this.api}/empData2.json`).pipe(map((resData: any) => {
+    return this.http.get<Employee>(`${this.api}/empData2.json`).pipe(map((resData: any) => {
       const userArray = [];
       for (const key in resData) {
         if (resData.hasOwnProperty(key) && !resData[key].isDeleted) {
@@ -30,15 +30,11 @@ export class DesignUtilityService {
   }
 
   fetchSingleEmployee(id: any) {
-    return this.http.get<any>(`${this.api}/empData2/${id}.json`)
+    return this.http.get<Employee>(`${this.api}/empData2/${id}.json`)
   }
 
   deleteEmployee(userId: any): Observable<any> {
     return this.http.put(`${this.api}/empData2/${userId}.json`, {isDeleted: true});
-  }
-
-  updateEmployee(userId: string, data: any): Observable<any> {
-    return this.http.patch(`${this.api}/empData2/${userId}.json`, data);
   }
 
 

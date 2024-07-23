@@ -30,17 +30,26 @@ export class DashboardComponent implements OnInit {
       (res: any[]) => {
         this.allUsers = res
       },
-      (error) => {
-        console.error('Error fetching users:', error);
-      }
     );
   }
 
   addEmployee(enterAnimationDuration: string, exitAnimationDuration: string) {
-    this.dialog.open(AddEmployeeComponent, {
-      width: '550px',
+    const dialogRef = this.dialog.open(AddEmployeeComponent, {
+      width: '315px',
       enterAnimationDuration,
       exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+        
+        this._du.saveData(result).subscribe(
+          (res: any) => {
+            console.log('Employee added successfully', res);
+          },
+        );
+      }
     });
   }
 
@@ -48,7 +57,7 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['employee', id])
   }
 
-  openDialog(userId: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
+  deleteEmployee(userId: string, enterAnimationDuration: string, exitAnimationDuration: string){
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '350px',
       data: { userId, enterAnimationDuration, exitAnimationDuration }
@@ -60,10 +69,8 @@ export class DashboardComponent implements OnInit {
         this._du.deleteEmployee(userId).subscribe(
           () => {
             this.allUsers = this.allUsers.filter(user => user.id !== userId);
+            this.fetchUsers();
           },
-          (error) => {
-            console.error('Error deleting user:', error);
-          }
         );
       }
       
