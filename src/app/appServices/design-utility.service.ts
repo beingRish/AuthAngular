@@ -11,35 +11,31 @@ export class DesignUtilityService {
 
   api = config.API_URL;
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) { }
 
-  saveData(data: any){
+  saveData(data: any) {
     return this.http.post(`${this.api}/empData2.json`, data)
   }
 
-  fetchData(){
+  fetchData() {
     return this.http.get<Employee>(`${this.api}/empData2.json`).pipe(map((resData: any) => {
       const userArray = [];
-      for(const key in resData){
-        if(resData.hasOwnProperty(key)){
-          userArray.push({userId:key, ...resData[key]})
+      for (const key in resData) {
+        if (resData.hasOwnProperty(key)) {
+          userArray.push({ userId: key, ...resData[key] })
         }
       }
       return userArray
     }))
   }
 
-  fetchSingleEmployee(id: any){
+  fetchSingleEmployee(id: any) {
     return this.http.get<any>(`${this.api}/empData2/${id}.json`)
   }
 
   deleteEmployee(userId: any): Observable<any> {
-    if (confirm('Do you want to delete this user?')) {
-      console.log('Deleting user with ID:', userId);
-      return this.http.delete(`${this.api}/empData2/${userId}.json`);
-    }
-    return of(null);
+    return this.http.delete(`${this.api}/empData2/${userId}.json`);
   }
-  
+
 
 }

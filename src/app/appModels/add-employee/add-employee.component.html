@@ -1,0 +1,42 @@
+<div class="container p-3">
+    <div class="d-flex">
+        <h1 mat-dialog-title>Add Employee</h1>
+        <button (click)="close()" mat-icon-button mat-dialog-close class="close ms-auto">
+            <i class="fa fa-times " aria-hidden="true"></i>
+        </button>
+    </div>
+    <hr>
+    <div mat-dialog-content>
+        <form>
+            <div class="form-group pb-3">
+                <label for="name" class="col-form-label">Enter Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group pb-3">
+                <label for="designation" class="col-form-label">Enter Designation</label>
+                <input type="text" class="form-control" id="designation">
+            </div>
+            <div class="form-group pb-3">
+                <label for="department" class="col-form-label">Choose Department</label>
+                <select class="form-control" id="department">
+                    <option>Development</option>
+                    <option>HR</option>
+                    <option>Design</option>
+                    <option>Admin</option>
+                </select>
+            </div>
+            <div class="form-group pb-3">
+                <label for="status" class="col-form-label">Set Status</label>
+                <select class="form-control" id="status">
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div mat-dialog-actions class="text-end pt-2">
+        <button  (click)="close()"  mat-button mat-dialog-close>Close</button>
+        <button mat-button mat-dialog-close cdkFocusInitial class="btn btn-primary">Submit</button>
+    </div>
+</div>

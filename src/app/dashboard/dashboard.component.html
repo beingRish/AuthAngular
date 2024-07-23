@@ -2,8 +2,7 @@
     <div class="pt-2">
         <div class="d-flex justify-content-between align-items-center">
             <h2>Dashboard</h2>
-            <button class="border border-1 border-success text-success bg-white p-1"
-                (click)="addEmployee()">
+            <button class="border border-1 border-success text-success bg-white p-1" (click)="addEmployee('1000ms', '500ms')">
                 <i class="fa fa-plus" aria-hidden="true"></i>Add Employee
             </button>
         </div>
@@ -36,7 +35,7 @@
         <div class="col-md-12">
             <div class="row d-flex">
                 <div class="col-md-6" *ngFor="let user of allUsers">
-                    <div class="card mb-3" style="max-width: 100%;">
+                    <div class="card mb-3" style="max-width: 100%;"  *ngIf="!user.isDeleted">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="../../assets/images/profile.jpg" class="img-fluid rounded-start" alt="...">
@@ -48,25 +47,21 @@
                                     <p><span class="text-muted">Deepartment :</span> {{user.dept}}</p>
                                     <p>
                                         <span class="text-muted">Status : </span>
-                                        <span 
-                                        class="text-white m-1" 
-                                        [ngClass]="{
+                                        <span class="text-white m-1" [ngClass]="{
                                             'bg-success': user.status === 'Active',
                                             'bg-danger': user.status === 'Inactive'
-                                        }" 
-                                        style="border-radius: 5px;">
-                                        {{user.status}}
-                                    </span>
+                                        }" style="border-radius: 5px;">
+                                            {{user.status}}
+                                        </span>
 
                                     </p>
                                     <button class="border border-1 border-success text-success bg-white "
-                                        [routerLink]="['employee', user.id]"
-                                        (click)="viewEmployee(user.id)">View Employee
+                                        [routerLink]="['employee', user.id]" (click)="viewEmployee(user.id)">View
+                                        Employee
                                     </button>
                                     <button class="border border-1 border-danger text-danger bg-white m-2"
-                                            (click)="deleteUser(user.id)">
-                                        <i class="fa fa-times "
-                                            aria-hidden="true">
+                                        (click)="openDialog(user.id,'1000ms', '500ms')">
+                                        <i class="fa fa-times " aria-hidden="true">
                                         </i>
                                     </button>
                                 </div>
