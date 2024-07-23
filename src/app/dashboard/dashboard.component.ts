@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DesignUtilityService } from '../appServices/design-utility.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +11,10 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit{
 
   allUsers: any[] = [];
-
-  constructor(private _du: DesignUtilityService){
+  constructor(
+    private _du: DesignUtilityService,
+    private router: Router
+    ){
   }
 
   ngOnInit(): void {
@@ -20,6 +23,25 @@ export class DashboardComponent implements OnInit{
       console.log(this.allUsers);
       
     })
+  }
+
+  addEmployee() {
+    
+  }
+
+  viewEmployee(id: any) {
+    this.router.navigate(['employee', id])
+  }
+
+  deleteUser(id: any) {
+    this._du.deleteEmployee(id)?.subscribe(
+      (res) => {
+        console.log('User deleted successfully:', res);
+      },
+      (error) => {
+        console.error('Error deleting user:', error);
+      }
+    )
   }
 
 }

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="pt-2">
+        <h2>Employee Details</h2>
+    </div>
+    <hr>
+    <div class="row d-flex">
+        <div class="col-md-6">
+            <div class="" style="max-width: 100%;">
+                <img src="../../assets/images/profile2.jpg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div>
+                <p><span>Name :</span> {{user?.name}}</p>
+                <p><span>Designation :</span> {{user?.designation}}</p>
+                <p><span>Deepartment :</span> {{user?.dept}}</p>
+                <p>
+                    <span>Status : </span>
+                    <span   class="text-white m-1" [ngClass]="{
+                                'bg-success': user?.status === 'Active',
+                                'bg-danger': user?.status === 'Inactive' 
+                                }" 
+                            style="border-radius: 5px;">
+                        {{user?.status}}
+                    </span>
+
+                </p>
+                <button class="border border-1 border-success text-success bg-white mt-1" routerLink="/">Back
+                    to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

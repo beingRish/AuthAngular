@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { config } from '../config';
-import { map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { Employee } from '../appInterface/emp.interface';
 
 @Injectable({
@@ -33,12 +33,13 @@ export class DesignUtilityService {
     return this.http.get<any>(`${this.api}/empData2/${id}.json`)
   }
 
-  deleteEmployee(userId: any){
-    if(confirm('Do you want to delete this user?')){
-      console.log(userId);
-      return this.http.delete(`${this.api}/empData2/${userId}.json`)
+  deleteEmployee(userId: any): Observable<any> {
+    if (confirm('Do you want to delete this user?')) {
+      console.log('Deleting user with ID:', userId);
+      return this.http.delete(`${this.api}/empData2/${userId}.json`);
     }
-    return
+    return of(null);
   }
+  
 
 }

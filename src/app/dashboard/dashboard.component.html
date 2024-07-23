@@ -1,10 +1,9 @@
-<app-header></app-header>
-
 <div class="container">
     <div class="pt-2">
         <div class="d-flex justify-content-between align-items-center">
             <h2>Dashboard</h2>
-            <button class="border border-1 border-success text-success bg-white p-1">
+            <button class="border border-1 border-success text-success bg-white p-1"
+                (click)="addEmployee()">
                 <i class="fa fa-plus" aria-hidden="true"></i>Add Employee
             </button>
         </div>
@@ -60,11 +59,16 @@
                                     </span>
 
                                     </p>
-                                    <button class="border border-1 border-success text-success bg-white p-1">
-                                        View Employee
+                                    <button class="border border-1 border-success text-success bg-white "
+                                        [routerLink]="['employee', user.id]"
+                                        (click)="viewEmployee(user.id)">View Employee
                                     </button>
-                                    <i class="fa fa-times border border-1 border-danger text-danger bg-white p-2 m-2"
-                                        aria-hidden="true"></i>
+                                    <button class="border border-1 border-danger text-danger bg-white m-2"
+                                            (click)="deleteUser(user.id)">
+                                        <i class="fa fa-times "
+                                            aria-hidden="true">
+                                        </i>
+                                    </button>
                                 </div>
                             </div>
                         </div>

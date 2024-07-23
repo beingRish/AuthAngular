@@ -9,12 +9,12 @@ button.border-success:hover {
     background-color: green !important;
 }
 
-.fa-times {
-    border-radius: 5px;
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
+.card-body button.border-danger {
+    border-radius: 5px !important;
+    transition: all 0.3s ease !important; /* Smooth transition for hover effect */
 }
 
-.fa-times:hover {
+.card-body button.border-danger:hover {
     color: white !important;
     background-color: red !important;
 }
