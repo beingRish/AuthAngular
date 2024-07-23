@@ -17,16 +17,16 @@ export class DesignUtilityService {
     return this.http.post(`${this.api}/empData2.json`, data)
   }
 
-  fetchData() {
-    return this.http.get<Employee>(`${this.api}/empData2.json`).pipe(map((resData: any) => {
+  fetchData(): Observable<any> {
+    return this.http.get<any>(`${this.api}/empData2.json`).pipe(map((resData: any) => {
       const userArray = [];
       for (const key in resData) {
-        if (resData.hasOwnProperty(key)) {
-          userArray.push({ userId: key, ...resData[key] })
+        if (resData.hasOwnProperty(key) && !resData[key].isDeleted) {
+          userArray.push({ userId: key, ...resData[key] });
         }
       }
-      return userArray
-    }))
+      return userArray;
+    }));
   }
 
   fetchSingleEmployee(id: any) {
@@ -34,7 +34,11 @@ export class DesignUtilityService {
   }
 
   deleteEmployee(userId: any): Observable<any> {
-    return this.http.delete(`${this.api}/empData2/${userId}.json`);
+    return this.http.put(`${this.api}/empData2/${userId}.json`, {isDeleted: true});
+  }
+
+  updateEmployee(userId: string, data: any): Observable<any> {
+    return this.http.patch(`${this.api}/empData2/${userId}.json`, data);
   }
 
 
