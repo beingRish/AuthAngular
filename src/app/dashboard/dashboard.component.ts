@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DesignUtilityService } from '../appServices/design-utility.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -59,7 +59,7 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteEmployee(userId: string, enterAnimationDuration: string, exitAnimationDuration: string){
-    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    const dialogRef = this.dialog.open(DeleteEmployeeComponent, {
       width: '350px',
       data: { userId, enterAnimationDuration, exitAnimationDuration }
     });

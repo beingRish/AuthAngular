@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DesignUtilityService } from 'src/app/appServices/design-utility.service';
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.component';
 
 @Component({
   selector: 'app-add-employee',
@@ -15,7 +14,7 @@ export class AddEmployeeComponent implements OnInit{
   data: {} = {}
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteDialogComponent>,
+    public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
     private fb: FormBuilder
   ) { }
 

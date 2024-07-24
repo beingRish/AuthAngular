@@ -8,7 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EmpComponent } from './emp/emp.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +25,7 @@ import { AuthComponent } from './auth/auth.component';
     HeaderComponent,
     DashboardComponent,
     EmpComponent,
-    DeleteDialogComponent,
+    DeleteEmployeeComponent,
     AddEmployeeComponent,
     AuthComponent
   ],
