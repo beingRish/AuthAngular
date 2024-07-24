@@ -1,4 +1,7 @@
 <div class="container">
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    <strong>An Error Occurred</strong> {{error}}
+  </div>
   <div class="card">
     <div class="container-fluid text-center">
       <div class="heading image pt-5">

@@ -11,8 +11,9 @@ import { AuthResponse } from '../appInterface/auth-response.interface';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  ;
+
   loginMode: boolean = true
+  error: any;
   Form!: FormGroup
 
   constructor(
@@ -52,6 +53,7 @@ export class AuthComponent implements OnInit {
         },
         err => {
           console.log(err);
+          this.error = err.error.error.message;
         })
 
     }
