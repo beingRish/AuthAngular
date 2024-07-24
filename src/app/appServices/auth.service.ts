@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { config } from '../config';
 import { AuthResponse } from '../appInterface/auth-response.interface';
 import { ErrorService } from './error.service';
-import { catchError, Subject, tap } from 'rxjs';
+import { BehaviorSubject, catchError, tap } from 'rxjs';
 import { User } from '../appModels/user.model';
+import { __values } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  user = new Subject<User>();
+  user = new BehaviorSubject<User|null>(null)
 
   constructor(
     private http: HttpClient,

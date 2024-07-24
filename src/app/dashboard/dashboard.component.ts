@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DesignUtilityService } from '../appServices/design-utility.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchUsers();
+    this.onGetUsers();
   }
 
   fetchUsers(): void {
@@ -79,6 +80,18 @@ export class DashboardComponent implements OnInit {
       }
       
     });
+  }
+
+  onGetUsers(){
+    this._du.fetchData()
+      .subscribe(
+        (res: any)=>{
+          const data = JSON.stringify(res)
+        },
+        (err: any)=>{
+          console.log(err);
+        }
+      )
   }
 
 }
