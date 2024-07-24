@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DesignUtilityService } from '../appServices/design-utility.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogComponent } from '../appModels/delete-dialog/delete-dialog.component';
-import { AddEmployeeComponent } from '../appModels/add-employee/add-employee.component';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 
 @Component({
   selector: 'app-dashboard',
