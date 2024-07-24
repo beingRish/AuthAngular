@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from '../appServices/auth.service';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../appInterface/auth-response.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -19,6 +20,7 @@ export class AuthComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +52,7 @@ export class AuthComponent implements OnInit {
       authObservable.subscribe(
         res => {
           console.log(res);
+          this.router.navigate(['dashboard'])
         },
         err => {
           this.error = err;
