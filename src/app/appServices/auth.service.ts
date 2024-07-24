@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 import { config } from '../config';
 import { AuthResponse } from '../appInterface/auth-response.interface';
 import { ErrorService } from './error.service';
-import { catchError } from 'rxjs';
+import { catchError, Subject, tap } from 'rxjs';
+import { User } from '../appModels/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  user = new Subject<User>();
 
   constructor(
     private http: HttpClient,
@@ -23,6 +26,9 @@ export class AuthService {
     }).pipe(
       catchError(err => {
         return this._errService.handleError(err)
+      }),
+      tap(res => {
+        this.authenticatedUser(res.email, res.localId, res.idToken, +res.expiresIn)
       })
     )
   }
@@ -35,7 +41,20 @@ export class AuthService {
     }).pipe(
       catchError(err => {
         return this._errService.handleError(err)
+      }),
+      tap(res => {
+        this.authenticatedUser(res.email, res.localId, res.idToken, +res.expiresIn)
       })
     )
+  }
+
+  private authenticatedUser(email: string, userId: string, token: string, expiresIn: any){
+
+    const expirationDate = new Date(new Date().getTime() + expiresIn*1000)
+
+    const user = new User(email, userId, token, expirationDate)
+    console.log('authenticatedUser: user', user);
+    this.user.next(user)
+
   }
 }
