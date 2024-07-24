@@ -25,11 +25,6 @@ button:hover {
 }
 
 .close{
-    margin-right: 0px;
-    border-radius: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
     padding-bottom: 30px;
     background-color: transparent !important;
     color: rgb(61, 60, 60) !important;
@@ -38,4 +33,10 @@ button:hover {
 .close:hover{
     background-color: transparent !important;
     color: rgb(61, 60, 60) !important;
+}
+
+
+
+::ng-deep .mdc-dialog .mdc-dialog__content {
+    padding: 0px 0px 0px 0px !important;
 }

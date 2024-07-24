@@ -35,7 +35,7 @@ button:hover {
     background-color: transparent !important;
     color: rgb(61, 60, 60) !important;
 }
-
-ng-deep .mdc-dialog .mdc-dialog__content {
+/* 
+::ng-deep .mdc-dialog .mdc-dialog__content {
     padding: 0px 0px 0px 0px !important;
-}
+} */

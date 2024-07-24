@@ -18,13 +18,9 @@ export class EmpComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-
     this.userId = this.route.snapshot.paramMap.get('id')
-  
     this._du.fetchSingleEmployee(this.userId).subscribe(res => {
       this.user = res
-      
     })
   }
-
 }
