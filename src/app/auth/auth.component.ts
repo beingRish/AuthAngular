@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../appServices/auth.service';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../appInterface/auth-response.interface';
@@ -14,11 +13,12 @@ export class AuthComponent implements OnInit {
 
   loginMode: boolean = true
   error: any;
+
   Form!: FormGroup
 
   constructor(
     private fb: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -52,8 +52,7 @@ export class AuthComponent implements OnInit {
           console.log(res);
         },
         err => {
-          console.log(err);
-          this.error = err.error.error.message;
+          this.error = err;
         })
 
     }
