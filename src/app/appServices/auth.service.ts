@@ -17,4 +17,12 @@ export class AuthService {
       returnSecureToken: true
     })
   }
+
+  signIn(email: string, password: string){
+    return this.http.post<AuthResponse>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${config.API_KEY}`, {
+      email:email, 
+      password: password,
+      returnSecureToken: true
+    })
+  }
 }
