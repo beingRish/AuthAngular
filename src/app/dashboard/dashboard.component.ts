@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   fetchUsers(): void {
     this._du.fetchData().subscribe(
       (res: any[]) => {
-        this.allUsers = res
+        this.allUsers = res.map(user => ({ ...user, isDeleted: false }));
       },
     );
   }
@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
         
         this._du.saveData(result).subscribe(
           (res: any) => {
+            this.fetchUsers();
             console.log('Employee added successfully', res);
           },
         );
@@ -68,8 +69,11 @@ export class DashboardComponent implements OnInit {
       if (result === 'delete') {
         this._du.deleteEmployee(userId).subscribe(
           () => {
-            this.allUsers = this.allUsers.filter(user => user.id !== userId);
-            this.fetchUsers();
+            const userToDelete = this.allUsers.find(user => user.id === userId);
+            if (userToDelete) {
+              userToDelete.isDeleted = true;
+            }
+            this.fetchUsers()
           },
         );
       }

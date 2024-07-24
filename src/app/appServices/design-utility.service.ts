@@ -21,7 +21,7 @@ export class DesignUtilityService {
     return this.http.get<Employee>(`${this.api}/empData2.json`).pipe(map((resData: any) => {
       const userArray = [];
       for (const key in resData) {
-        if (resData.hasOwnProperty(key) && !resData[key].isDeleted) {
+        if (resData.hasOwnProperty(key) && !resData[key]?.isDeleted) {
           userArray.push({ userId: key, ...resData[key] });
         }
       }
