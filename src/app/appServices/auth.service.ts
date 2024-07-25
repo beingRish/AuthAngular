@@ -93,4 +93,20 @@ export class AuthService {
     this.autoSignOut(expiresIn*1000);
     localStorage.setItem('UserData', JSON.stringify(user)); // Soring Data in LocalStorage
   }
+
+  updateProfile(data: any){
+    
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${config.API_KEY}`,
+    {
+      idToken: data.token,
+      displayName: data.name,
+      photoUrl: data.picture,
+      returnSecureToken: true
+    }).pipe(
+      catchError(err => {
+        return this._errService.handleError(err)
+      })
+    )
+  }
+
 }
