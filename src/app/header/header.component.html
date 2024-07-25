@@ -3,11 +3,6 @@
         <a class="navbar-brand" href="#">Auth Angular</a>
         <div id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item active mt-1" *ngIf="isLoggedIn">
-                    <a class="nav-link active" aria-current="page" routerLink="dashboard">
-                        <span>Dashboard</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="">
                         <button *ngIf="!isLoggedIn" class="border border-1 border-danger text-danger bg-transparent p-1">
@@ -21,7 +16,7 @@
                     </span>
                     <div class="profile-popup">
                         <ul>
-                            <li><a routerLink="/dashboard"><i class="fa fa-th-large"></i>Dashboard</a></li>
+                            <li><a routerLink="dashboard"><i class="fa fa-th-large"></i>Dashboard</a></li>
                             <li><a href="#"><i class="fa fa-eye"></i>View Profile</a></li>
                             <li><a href=""><i class="fa fa-pencil"></i>Edit Profile</a></li>
                             <li><a href=""><i class="fa fa-eye"></i>Change Password</a></li>
