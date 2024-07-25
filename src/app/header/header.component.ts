@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
     if (profilePopup) {
       profilePopup.classList.toggle('active');
     }
+    profilePopup?.classList.toggle('hidden');
   }
 
   onSignOut() {

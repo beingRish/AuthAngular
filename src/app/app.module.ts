@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     EmpComponent,
     DeleteEmployeeComponent,
     AddEmployeeComponent,
-    AuthComponent
+    AuthComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
