@@ -6,11 +6,11 @@ import { AuthService } from '../appServices/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   isLoggedIn = false;
 
-  constructor(private _authService: AuthService){}
+  constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
     this._authService.user.subscribe(res => {
@@ -21,8 +21,12 @@ export class HeaderComponent implements OnInit{
   toggleProfilePopup() {
     const profilePopup = document.querySelector('.profile-popup');
     if (profilePopup) {
-        profilePopup.classList.toggle('active');
+      profilePopup.classList.toggle('active');
     }
-}
+  }
+
+  onSignOut() {
+    this._authService.signOut();
+  }
 
 }

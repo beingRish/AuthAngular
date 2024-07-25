@@ -5,6 +5,7 @@ import { AuthResponse } from '../appInterface/auth-response.interface';
 import { ErrorService } from './error.service';
 import { BehaviorSubject, catchError, tap } from 'rxjs';
 import { User } from '../appModels/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ import { User } from '../appModels/user.model';
 export class AuthService {
 
   user = new BehaviorSubject<User | null>(null)
+  private tokenExpirationTimer: any;
 
   constructor(
     private http: HttpClient,
-    private _errService: ErrorService
+    private _errService: ErrorService,
+    private router: Router
   ) { }
 
   signUp(email: string, password: string) {
@@ -58,15 +61,36 @@ export class AuthService {
     
       const loggedInUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate))
       if(loggedInUser.token){
-        this.user.next(loggedInUser)
+        this.user.next(loggedInUser);
+
+        const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+        this.autoSignOut(expirationDuration);
       }
     }
+  }
+
+  signOut(){
+    this.user.next(null);
+    this.router.navigate(['']);
+    localStorage.removeItem('UserData');
+
+    if(this.tokenExpirationTimer){
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoSignOut(expirationDuration: number){
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.signOut();
+    }, expirationDuration);
   }
 
   private authenticatedUser(email: string, userId: string, token: string, expiresIn: number) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000)
     const user = new User(email, userId, token, expirationDate)
     this.user.next(user)  // Storing Data in User Subject
-    localStorage.setItem('UserData', JSON.stringify(user));
+    this.autoSignOut(expiresIn*1000);
+    localStorage.setItem('UserData', JSON.stringify(user)); // Soring Data in LocalStorage
   }
 }
