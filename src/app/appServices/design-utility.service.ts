@@ -23,18 +23,7 @@ export class DesignUtilityService {
   }
 
   fetchData(): Observable<any> {
-
-    return this._authService.user.pipe(
-      take(1),
-      exhaustMap(user => {
-        if(user && user?.token){
-          return this.http.get<Employee>(`${this.api}/empData2.json`, {
-            params: new HttpParams().set('auth', user?.token)
-          })
-        }else {
-          throw new Error('User token is not available');
-        }
-      }),
+    return this.http.get<Employee>(`${this.api}/empData2.json`).pipe(
       map((resData: any) => {
         const userArray = [];
         for (const key in resData) {
@@ -52,7 +41,7 @@ export class DesignUtilityService {
   }
 
   deleteEmployee(userId: any): Observable<any> {
-    return this.http.put(`${this.api}/empData2/${userId}.json`, {isDeleted: true});
+    return this.http.put(`${this.api}/empData2/${userId}.json`, { isDeleted: true });
   }
 
 
