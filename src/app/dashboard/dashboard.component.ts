@@ -36,6 +36,8 @@ export class DashboardComponent implements OnInit {
     this._du.fetchData().subscribe(
       (res: any[]) => {
         this.allUsers = res.map(user => ({ ...user, isDeleted: false }));
+        console.log('allUsers',this.allUsers);
+        
       },
     );
   }

@@ -21,6 +21,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     AddEmployeeComponent,
     AuthComponent,
     ProfileComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

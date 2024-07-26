@@ -37,7 +37,7 @@ export class DesignUtilityService {
   }
 
   fetchSingleEmployee(id: any) {
-    return this.http.get<Employee>(`${this.api}/empData2/${id}.json`)
+    return this.http.get<any>(`${this.api}/empData2/${id}.json`)
   }
 
   deleteEmployee(userId: any): Observable<any> {

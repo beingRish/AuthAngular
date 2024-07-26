@@ -143,4 +143,15 @@ export class AuthService {
     )
   }
 
+  forgetPassword(data: any){
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${config.API_KEY}`, {
+      requestType	: 'PASSWORD_RESET',
+      email: data.email,
+    }).pipe(
+      catchError(err => {
+        return this._errService.handleError(err)
+      })
+    )
+  }
+
 }

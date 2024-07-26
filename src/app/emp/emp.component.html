@@ -9,9 +9,9 @@
                 <img src="../../assets/images/profile2.jpg" class="img-fluid rounded-start" alt="...">
             </div>
             <div>
-                <p><span>Name :</span> {{user?.name}}</p>
-                <p><span>Designation :</span> {{user?.designation}}</p>
-                <p><span>Deepartment :</span> {{user?.dept}}</p>
+                <p><span>Name :</span> {{user ? user.name : ''}}</p>
+                <p><span>Designation :</span> {{user ? user.designation: ''}}</p>
+                <p><span>Deepartment :</span> {{user ? user.dept: ''}}</p>
                 <p>
                     <span>Status : </span>
                     <span   class="text-white m-1" [ngClass]="{
@@ -19,7 +19,7 @@
                                 'bg-danger': user?.status === 'Inactive' 
                                 }" 
                             style="border-radius: 5px;">
-                        {{user?.status}}
+                        {{user ? user.status : ''}}
                     </span>
 
                 </p>

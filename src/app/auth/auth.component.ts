@@ -64,7 +64,6 @@ export class AuthComponent implements OnInit {
         err => {
           this.error = err;
         })
-
     }
   }
 }
