@@ -24,6 +24,13 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this._authService.user.subscribe(res => {
+      if(res){
+        this.router.navigate(['/dashboard']);
+      }
+    })
+
     this.Form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]

@@ -13,6 +13,12 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   user = new BehaviorSubject<User | null>(null)
+  profileInfo = new BehaviorSubject({
+    displayName: '',
+    email: '',
+    photoUrl: '',
+  })
+
   private tokenExpirationTimer: any;
 
   constructor(
@@ -65,6 +71,7 @@ export class AuthService {
 
         const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
         this.autoSignOut(expirationDuration);
+        this.gerUserData(loggedInUser.token);
       }
     }
   }
@@ -92,6 +99,7 @@ export class AuthService {
     this.user.next(user)  // Storing Data in User Subject
     this.autoSignOut(expiresIn*1000);
     localStorage.setItem('UserData', JSON.stringify(user)); // Soring Data in LocalStorage
+    this.gerUserData(token);
   }
 
   updateProfile(data: any){
@@ -105,6 +113,32 @@ export class AuthService {
     }).pipe(
       catchError(err => {
         return this._errService.handleError(err)
+      })
+    )
+  }
+
+  gerUserData(token: any){
+    this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${config.API_KEY}`,
+    {
+      idToken: token
+    }
+    ).subscribe(res => {
+      this.profileInfo.next({
+        displayName: res.users[0].displayName,
+        email: res.users[0].email,
+        photoUrl: res.users[0].photoUrl,
+      })
+    })
+  }
+
+  changePassword(data: any){
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${config.API_KEY}`, {
+      idToken: data.idToken,
+      password: data.password,
+      returnSecureToken: true
+    }).pipe(
+      catchError(err => {
+        return this._errService.handleError(err);
       })
     )
   }

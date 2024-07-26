@@ -21,7 +21,7 @@
             <form [formGroup]="Form" (ngSubmit)="onSubmit()" class="noEdit">
                 <div class="form-group">
                     <label>{{editMode?'Enter':''}} Name</label>
-                    <span class="value" *ngIf="!editMode">Rishabh Singh</span>
+                    <span class="value" *ngIf="!editMode">{{profileInfo.displayName}}</span>
                     <input  *ngIf="editMode"
                         type="text" 
                         class="form-control mt-2" 
@@ -30,8 +30,10 @@
                     <small *ngIf="!Form.get('name')?.valid && Form.get('name')?.touched" class="form-text text-muted">Please Enter Name</small>
                 </div>
                 <div class="form-group">
-                    <label>{{editMode?'Enter':''}} Profile Picture Url</label>
-                    <span class="value" *ngIf="!editMode">Test Url</span>
+                    <label>{{editMode?'Enter Profile Picture Url':'Profile Picture'}}</label>
+                    <div class="pt-2">
+                        <img width="100" *ngIf="!editMode" src="{{profileInfo.photoUrl}}" alt="">
+                    </div>
                     <input  *ngIf="editMode"
                         type="text" 
                         class="form-control mt-2" 

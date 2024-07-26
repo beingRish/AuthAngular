@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.component';
+import { AuthService } from '../appServices/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +13,18 @@ import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.comp
 })
 export class DashboardComponent implements OnInit {
 
+  user: any;
 
   allUsers: any[] = [];
   constructor(
     private _du: DesignUtilityService,
+    private _authService: AuthService,
     private router: Router,
     public dialog: MatDialog
   ) {
+    this._authService.profileInfo.subscribe(res => {
+      this.user = res;
+    })
   }
 
   ngOnInit(): void {

@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   editMode: boolean = false
   Form!: FormGroup
   token: any;
+  profileInfo: any;
 
   constructor(
     private fb: FormBuilder,
@@ -43,13 +44,26 @@ export class ProfileComponent implements OnInit {
       }
     })
 
+    this._authService.profileInfo.subscribe(res => {
+      this.profileInfo = res;
+      this.Form.setValue({
+        name: res.displayName,
+        picture: res.photoUrl
+      })
+    })
+
   }
 
   onSubmit() {
     if (this.Form.valid) {
       const updatedData = { token: this.token, ...this.Form.value };
+      console.log(updatedData);
+      
       this._authService.updateProfile(updatedData).subscribe(
-        (res) => console.log(res),
+        (res) => {
+          this._authService.gerUserData(this.token);
+          
+        },
         (err) => console.log(err)
       )
     } else {
@@ -65,7 +79,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onDiscard() {
-    this.Form.reset();
     this.rounter.navigate([], { queryParams: { EditMode: null } })
   }
 }
