@@ -23,34 +23,37 @@
                         <div class="col-md-4" *ngFor="let user of allUsers">
                             <div class="card mb-3" style="max-width: 100%;" *ngIf="!user?.isDeleted">
                                 <div class="row g-0">
-                                    <div class="col-md-4">
-                                        <img src="../../assets/images/profile.jpg" class="img-fluid rounded-start" alt="...">
-                                    </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <p><span class="text-muted">Name :</span> {{user.name}}</p>
-                                            <p><span class="text-muted">Designation :</span> {{user.designation}}</p>
-                                            <p><span class="text-muted">Deepartment :</span> {{user.dept}}</p>
-                                            <p>
-                                                <span class="text-muted">Status : </span>
-                                                <span class="text-white m-1" [ngClass]="{
+                                            <h2>{{user.name}}</h2>
+                                            <h3 class="text-muted">{{user.designation}}</h3>
+                                            <span class="text-white m-1" [ngClass]="{
                                                     'bg-success': user.status === 'Active',
                                                     'bg-danger': user.status === 'Inactive'
                                                 }" style="border-radius: 5px;">
-                                                    {{user.status}}
-                                                </span>
-        
-                                            </p>
-                                            <button class="border border-1 border-success text-success bg-white "
-                                                [routerLink]="['employee', user.id]" (click)="viewEmployee(user.id)">View
-                                                Employee
-                                            </button>
-                                            <button class="border border-1 border-danger text-danger bg-white m-2"
-                                                (click)="deleteEmployee(user.id,'1000ms', '500ms')">
-                                                <i class="fa fa-times " aria-hidden="true">
-                                                </i>
-                                            </button>
+                                                {{user.status}}
+                                            </span>
+                                            <hr>
+                                            <div class="gap-10">
+                                                <button class="border border-1 border-success text-success bg-white"
+                                                    [routerLink]="['employee', user.id]"
+                                                    (click)="viewEmployee(user.id)"><i class="fa fa-eye"
+                                                        aria-hidden="true"></i>
+                                                </button>
+                                                <button class="border border-1 border-warning text-warning bg-white"
+                                                    [routerLink]="['employee', user.id]"
+                                                    (click)="viewEmployee(user.id)">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                </button>
+                                                <button class="border border-1 border-danger text-danger bg-white"
+                                                    (click)="deleteEmployee(user.id,'1000ms', '500ms')">
+                                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4 p-2">
+                                        <img src="../../assets/images/profile2.jpg" class="img-fluid rounded" alt="...">
                                     </div>
                                 </div>
                             </div>
