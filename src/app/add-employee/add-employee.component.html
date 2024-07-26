@@ -7,13 +7,21 @@
             <form [formGroup]="addEmployeeForm" (ngSubmit)="onSubmit()" class="noEdit">
                 <div class="form-group">
                     <label>Enter Name</label>
-                    <input type="text" class="form-control mt-2" formControlName="name">
+                    <div class="input-group flex-nowrap mt-2">
+                        <span class="input-group-text text-muted" id="addon-wrapping">Name</span>
+                        <input type="text" class="form-control" aria-describedby="addon-wrapping"
+                            formControlName="name">
+                    </div>
                     <small *ngIf="!addEmployeeForm.get('name')?.valid && addEmployeeForm.get('name')?.touched"
                         class="form-text text-muted" color="danger">Please Enter Name</small>
                 </div>
                 <div class="form-group">
                     <label>Enter Designation</label>
-                    <input type="text" class="form-control mt-2" formControlName="designation">
+                    <div class="input-group flex-nowrap mt-2">
+                        <span class="input-group-text text-muted" id="addon-wrapping">Designation</span>
+                        <input type="text" class="form-control" aria-describedby="addon-wrapping"
+                            formControlName="designation">
+                    </div>
                     <small
                         *ngIf="!addEmployeeForm.get('designation')?.valid && addEmployeeForm.get('designation')?.touched"
                         class="form-text text-muted " color="danger">
@@ -46,4 +54,3 @@
         </div>
     </div>
 </div>
-

@@ -1,70 +1,57 @@
 <div class="container">
-    <div class="pt-2">
+    <div class="pt-3">
         <div class="d-flex justify-content-between align-items-center">
-            <h2>Dashboard</h2>
-            <button class="border border-1 border-success text-success bg-white p-1"
-                (click)="addEmployee()">
+            <h1>Employee Dashboard</h1>
+            <button class="border border-1 border-success text-success bg-white p-1" (click)="addEmployee()">
                 <i class="fa fa-add" aria-hidden="true"></i>Add Employee
             </button>
         </div>
     </div>
     <hr>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-            <h2 class="navbar-brand" href="#">Welcome, {{user.displayName? user.displayName: 'User'}}</h2>
-            <div id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link active" aria-current="page" routerLink="">
-                            <i class="fa fa-list border border-1 border-gray p-2 bg-white text-black"
-                                aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="">
-                            <i class="fa fa-users border border-1 border-gray p-2 bg-white text-black"
-                                aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
+    <div class="card ">
+        <div class="card-header">
+            <h2 href="#">Welcome, {{user.displayName? user.displayName: 'User'}}</h2>
+            <div class="icons ">
+                <i class="fa fa-list border border-1 border-gray p-2 bg-white text-black m-1" aria-hidden="true"></i>
+                <i class="fa fa-users border border-1 border-gray p-2 bg-white text-black m-1" aria-hidden="true"></i>
             </div>
         </div>
-    </nav>
-    <hr>
-
-    <div class="row all-users">
-        <div class="col-md-12">
-            <div class="row d-flex">
-                <div class="col-md-6" *ngFor="let user of allUsers">
-                    <div class="card mb-3" style="max-width: 100%;" *ngIf="!user?.isDeleted">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="../../assets/images/profile.jpg" class="img-fluid rounded-start" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <p><span class="text-muted">Name :</span> {{user.name}}</p>
-                                    <p><span class="text-muted">Designation :</span> {{user.designation}}</p>
-                                    <p><span class="text-muted">Deepartment :</span> {{user.dept}}</p>
-                                    <p>
-                                        <span class="text-muted">Status : </span>
-                                        <span class="text-white m-1" [ngClass]="{
-                                            'bg-success': user.status === 'Active',
-                                            'bg-danger': user.status === 'Inactive'
-                                        }" style="border-radius: 5px;">
-                                            {{user.status}}
-                                        </span>
-
-                                    </p>
-                                    <button class="border border-1 border-success text-success bg-white "
-                                        [routerLink]="['employee', user.id]" (click)="viewEmployee(user.id)">View
-                                        Employee
-                                    </button>
-                                    <button class="border border-1 border-danger text-danger bg-white m-2"
-                                        (click)="deleteEmployee(user.id,'1000ms', '500ms')">
-                                        <i class="fa fa-times " aria-hidden="true">
-                                        </i>
-                                    </button>
+        <div class="card-body">
+            <div class="row all-users">
+                <div class="col-md-12">
+                    <div class="row d-flex">
+                        <div class="col-md-4" *ngFor="let user of allUsers">
+                            <div class="card mb-3" style="max-width: 100%;" *ngIf="!user?.isDeleted">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="../../assets/images/profile.jpg" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <p><span class="text-muted">Name :</span> {{user.name}}</p>
+                                            <p><span class="text-muted">Designation :</span> {{user.designation}}</p>
+                                            <p><span class="text-muted">Deepartment :</span> {{user.dept}}</p>
+                                            <p>
+                                                <span class="text-muted">Status : </span>
+                                                <span class="text-white m-1" [ngClass]="{
+                                                    'bg-success': user.status === 'Active',
+                                                    'bg-danger': user.status === 'Inactive'
+                                                }" style="border-radius: 5px;">
+                                                    {{user.status}}
+                                                </span>
+        
+                                            </p>
+                                            <button class="border border-1 border-success text-success bg-white "
+                                                [routerLink]="['employee', user.id]" (click)="viewEmployee(user.id)">View
+                                                Employee
+                                            </button>
+                                            <button class="border border-1 border-danger text-danger bg-white m-2"
+                                                (click)="deleteEmployee(user.id,'1000ms', '500ms')">
+                                                <i class="fa fa-times " aria-hidden="true">
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
