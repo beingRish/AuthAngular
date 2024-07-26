@@ -3,7 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-center;
-    padding: 3%;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 .card-header{
@@ -35,4 +38,8 @@
 .noEdit .form-group label{
     color: #9E9E9E;
     line-height: 1;
+}
+
+.card-body{
+    
 }
