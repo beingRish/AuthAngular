@@ -1,41 +1,38 @@
-button {
-    margin-right: 8px;
-    border-radius: 5px;
-    padding-left: 20px; 
-    padding-right: 20px;
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-center;
+    padding: 3%;
+}
+
+.card-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.card-header h1{
+    font-size: bold;
+    font-weight: 600;
     padding-top: 10px;
-    padding-bottom: 10px; 
-    border: none;
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-    background-color: gray;
-    color: white;
-}
-
-button:hover {
-    color: white !important;
-    background-color: rgb(97, 94, 94) !important;
-}
-
-.btn-primary{
-    background-color: #0b57d0 !important;
-}
-
-.btn-primary:hover{
-    background-color: #1c4a95 !important;
 }
 
 
-.close{
-    
-    background-color: transparent !important;
-    color: rgb(61, 60, 60) !important;
+.fa-pencil{
+    margin-right: 5px;
 }
 
-.close:hover{
-    background-color: transparent !important;
-    color: rgb(61, 60, 60) !important;
+.form-group{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
-/* 
-::ng-deep .mdc-dialog .mdc-dialog__content {
-    padding: 0px 0px 0px 0px !important;
-} */
+
+.noEdit .form-group:not(:last-child){
+    padding-bottom: 23px;
+}
+
+.noEdit .form-group label{
+    color: #9E9E9E;
+    line-height: 1;
+}

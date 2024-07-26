@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DesignUtilityService } from '../appServices/design-utility.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { AddEmployeeComponent } from '../add-employee/add-employee.component';
 import { DeleteEmployeeComponent } from '../delete-employee/delete-employee.component';
 import { AuthService } from '../appServices/auth.service';
 
@@ -42,25 +41,8 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  addEmployee(enterAnimationDuration: string, exitAnimationDuration: string) {
-    const dialogRef = this.dialog.open(AddEmployeeComponent, {
-      width: '315px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result);
-        
-        this._du.saveData(result).subscribe(
-          (res: any) => {
-            this.fetchUsers();
-            console.log('Employee added successfully', res);
-          },
-        );
-      }
-    });
+  addEmployee() {
+    this.router.navigate(['add-employee'])
   }
 
   viewEmployee(id: any) {

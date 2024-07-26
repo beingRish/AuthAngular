@@ -4,7 +4,7 @@ import { AuthService } from '../appServices/auth.service';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../appInterface/auth-response.interface';
 import { Router } from '@angular/router';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-auth',
