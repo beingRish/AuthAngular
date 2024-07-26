@@ -1,8 +1,5 @@
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -72,10 +69,6 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
               '478322242900-juf5maa6i3p4r3ofv53bovcr40p0r42p.apps.googleusercontent.com'
             )
           },
-          // {
-          //   id: FacebookLoginProvider.PROVIDER_ID,
-          //   provider: new FacebookLoginProvider('clientId')
-          // }
         ],
         onError: (err) => {
           console.error(err);
