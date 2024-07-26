@@ -154,4 +154,17 @@ export class AuthService {
     )
   }
 
+  googleSignIn(idToken: any){
+    return this.http.post<any>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key=${config.API_KEY}`, {
+      postBody : `id_token=${idToken}&providerId=google.com`,
+      requestUri: 'https://authangular-kbls--4200--41692973.local-credentialless.webcontainer.io/',
+      returnIdpCredential : true,
+      returnSecureToken : true
+    }).pipe(
+      catchError(err => {
+        return this._errService.handleError(err)
+      })
+    )
+  }
+
 }

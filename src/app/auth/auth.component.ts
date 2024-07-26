@@ -4,6 +4,7 @@ import { AuthService } from '../appServices/auth.service';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../appInterface/auth-response.interface';
 import { Router } from '@angular/router';
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-auth',
@@ -20,7 +21,8 @@ export class AuthComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _authService: AuthService,
-    private router: Router
+    private router: Router,
+    private socialAuthService: SocialAuthService
   ) { }
 
   ngOnInit(): void {
@@ -65,5 +67,21 @@ export class AuthComponent implements OnInit {
           this.error = err;
         })
     }
+  }
+
+  onGoogleSignIn(){
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
+      (user) => {
+        this._authService.googleSignIn(user.idToken).subscribe(
+          (res) => {
+            console.log(res);
+          },
+          (err) => {
+            console.log(err);
+            
+          }
+        )
+      }
+    )
   }
 }
