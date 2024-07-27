@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private rounter: Router,
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private _authService: AuthService
   ) {
@@ -79,6 +79,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onDiscard() {
-    this.rounter.navigate([], { queryParams: { EditMode: null } })
+    this.router.navigate([], { queryParams: { EditMode: null } })
   }
 }

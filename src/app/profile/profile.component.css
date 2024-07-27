@@ -3,7 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-center;
-    padding: 5%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .card-header{

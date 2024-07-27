@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-center;
-    padding-right: 10%;
-    padding-left: 10%;
+    padding-left: 30%;
+    padding-right: 30%;
     padding-top: 3%;
     padding-bottom: 3%;
 }
@@ -40,6 +40,3 @@
     line-height: 1;
 }
 
-.card-body{
-    
-}
