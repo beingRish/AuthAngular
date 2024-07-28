@@ -35,12 +35,12 @@
                                             </span>
                                             <hr>
                                             <div class="gap-10">
-                                                <button class="border border-1 border-success text-success bg-white"
+                                                <button class="border border-1 border-primary text-primary bg-white"
                                                     [routerLink]="['employee', user.id]"
                                                     (click)="viewEmployee(user.id, editMode)"><i class="fa fa-eye"
                                                         aria-hidden="true"></i>
                                                 </button>
-                                                <button class="border border-1 border-warning text-warning bg-white"
+                                                <button class="border border-1 border-success text-success bg-white"
                                                     [routerLink]="['employee', user.id]"
                                                     [queryParams]="{EditMode:true}"
                                                     (click)="viewEmployee(user.id, !editMode)">
