@@ -12,7 +12,7 @@ button.border-success:hover {
     background-color: green !important;
 }
 
-button.border-warning {
+button.border-primary {
     border-radius: 5px;
     transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
